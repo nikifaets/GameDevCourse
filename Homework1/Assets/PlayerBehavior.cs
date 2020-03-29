@@ -30,8 +30,7 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
 
-        Debug.Log(groundCount);
-        Debug.Log(fallingVelocity.y);
+
         moveDirection = Input.GetAxis("Vertical") * transform.forward;
         moveDirection *= speed*Time.deltaTime;
         moveDirection += fallingVelocity;
@@ -47,7 +46,6 @@ public class PlayerBehavior : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("enter");
         if(isOnGround())
         {
             groundCount += 1;
@@ -57,14 +55,9 @@ public class PlayerBehavior : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
-        Debug.Log("exit");
         if(isOnGround()) groundCount -= 1;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        Debug.Log(45);
-    }
+ 
 
     private bool isOnGround()
     {
@@ -74,11 +67,9 @@ public class PlayerBehavior : MonoBehaviour
         if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
         {
 
-            Debug.Log("RayCast hit");
             Collider collider = hit.collider;
             float angle = Vector3.Angle(Vector3.down, collider.gameObject.transform.forward);
             
-            print(angle);
             return angle < maxGroundAngle;
         }
 
