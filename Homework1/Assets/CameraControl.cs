@@ -16,12 +16,13 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         GameObject player = GameObject.Find("Player");
-        //Debug.Log(player);
-        transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.LookRotation( player.transform.position - transform.position ), Time.deltaTime*10 );
-
         Vector3 playerForward = player.transform.forward;
         playerForward = Vector3.Normalize(playerForward);
 
-        transform.position = player.transform.position - playerForward*5 + offset;
+        transform.position = player.transform.position - playerForward*10 + offset;
+        //Debug.Log(player);
+        transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.LookRotation( player.transform.position - transform.position ), Time.deltaTime*10 );
+
+        
     }
 }
