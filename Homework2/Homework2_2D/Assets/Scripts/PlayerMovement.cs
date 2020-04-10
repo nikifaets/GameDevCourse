@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rigidbody = GetComponent<Rigidbody2D>();
 		BigMario = Resources.Load<RuntimeAnimatorController>("MarioBig");
-		Debug.Log(BigMario);
 	}
 
 	void Update() {
@@ -78,7 +77,6 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		if(collision.gameObject.CompareTag("Mushroom")){
 
-			Debug.Log("hit shroom");
 			//Animator animator = GetComponent<Animator>();
 			//animator.runtimeAnimatorController = BigMario;
 			animator.Play("Buff");
@@ -87,13 +85,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void OnBuffFinished(){
 
-		Debug.Log("tadaaaa");
 		animator.runtimeAnimatorController= BigMario;
-	}
-
-	private void Hui(){
-
-		Debug.Log("dgfdg");
 	}
 
 
